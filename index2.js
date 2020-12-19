@@ -12,14 +12,14 @@ function getTitiles(res) {
     });
 }
 
-function getTemplate(titiles, res) {
+function getTemplate(titles, res) {
     fs.readFile('./template.html', function (err, data) {
         if (err) return hadError(err, res);
         formatHtml(titles, data.toString(), res);
     });
 }
 
-function formatHtml(titlles, tmpl, res) {
+function formatHtml(titles, tmpl, res) {
     let html = tmpl.replace('%', titles.join('</li><li>'));
     res.writeHead(200, {'Content-Type': 'text/html'});
     res.end(html);
